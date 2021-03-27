@@ -180,7 +180,7 @@
 
   player = new Player();
   player.pos = new Vec2(100, 200);
-  player.angle = Math.PI / 8;
+  player.angle = Math.PI / 1;
 
   function line(a, b) {
     ctx.beginPath();
@@ -211,7 +211,7 @@
     beams = [];
     let index = 0;
     let angle = player.angle - Math.PI / 4;
-    for (angle; angle < player.angle + Math.PI / 4; angle += Math.PI / 80) {
+    for (angle; angle < player.angle + Math.PI / 4; angle += Math.PI / 200) {
       beams.push(
         new Ray2(
           player.pos.copy(),
@@ -236,31 +236,39 @@
 
       let wallDist = hitBeam.mag();
       let wallPerpDist =
-        wallDist * Math.cos(angle + (Math.PI / 80) * index - player.angle);
-      let lineHeight = 3500 / wallPerpDist;
-      let viewRoot = new Vec2(20, 400);
-      let lineBegin = viewRoot.add(new Vec2(5 * index, -lineHeight / 2));
+        wallDist * Math.cos(angle + (Math.PI / 205) * index - player.angle);
+      let lineHeight = 15000 / wallPerpDist;
+      let viewRoot = new Vec2(1.5, 250);
+      let lineBegin = viewRoot.add(new Vec2(3 * index, -lineHeight / 2));
       let lineEnd = lineBegin.add(new Vec2(0, lineHeight));
-      ctx.fillRect(lineBegin.x - 2.4, lineBegin.y, 4.8, lineHeight);
+      ctx.fillRect(lineBegin.x - 1.5, lineBegin.y, 3, lineHeight);
       index++;
     }
   }
   function drawMap() {
+    ctx.clearRect(0, 0, 85, 105);
     for (let wall of walls) {
       line(wall.begin.mult(0.3), wall.end.mult(0.3));
     }
     point(player.pos.mult(0.3));
     for (let beam of beams) {
+      ctx.strokeStyle = "rgba(255,255,0,0.6)";
       line(beam.begin.mult(0.3), beam.end.mult(0.3));
+      ctx.strokeStyle = "rgba(0,0,0,1)";
     }
   }
 
-  function draw() {
+  function clearRect() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    beam = new Ray2(
-      player.pos.copy(),
-      new Vec2(Math.cos(player.angle), Math.sin(player.angle)).mult(100)
-    );
+    ctx.fillStyle = "rgb(142, 76, 13)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height / 2);
+    ctx.fillStyle = "rgb(161, 145, 98)";
+    ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
+    ctx.fillStyle = "rgba(0,0,0,1)";
+  }
+
+  function draw() {
+    clearRect();
     playerView();
     drawMap();
   }
@@ -268,20 +276,45 @@
   addEventListener("keydown", (event) => {
     console.log(event.keyCode);
     key_code = event.keyCode;
+    if (key_code === 67) {
+      player.angle += Math.PI / 16;
+      draw();
+    }
+    if (key_code === 90) {
+      player.angle -= Math.PI / 16;
+      draw();
+    }
+    if (key_code === 38) {
+      player.pos = player.pos.add(
+        new Vec2(Math.cos(player.angle), Math.sin(player.angle)).mult(5)
+      );
+      draw();
+    }
+    if (key_code === 40) {
+      player.pos = player.pos.sub(
+        new Vec2(Math.cos(player.angle), Math.sin(player.angle)).mult(5)
+      );
+      draw();
+    }
     if (key_code === 39) {
-      player.angle += Math.PI / 8;
+      player.pos = player.pos.add(
+        new Vec2(
+          Math.cos(player.angle + Math.PI / 2),
+          Math.sin(player.angle + Math.PI / 2)
+        ).mult(5)
+      );
       draw();
     }
     if (key_code === 37) {
-      player.angle -= Math.PI / 8;
+      player.pos = player.pos.add(
+        new Vec2(
+          Math.cos(player.angle - Math.PI / 2),
+          Math.sin(player.angle - Math.PI / 2)
+        ).mult(5)
+      );
       draw();
     }
   });
-
-  // document.getElementById("turn").addEventListener("click", () => {
-  //   player.angle += Math.PI / 8;
-  //   draw();
-  // });
 
   draw();
 }
