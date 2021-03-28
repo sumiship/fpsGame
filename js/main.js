@@ -445,7 +445,6 @@
     }
     if (loop % (8 - speed) == 0) createItem();
     loop++;
-    console.log(loop);
     draw();
     var id = setTimeout(bomb, 1000);
     if (loop > 10000 || fire) {
