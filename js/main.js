@@ -467,6 +467,7 @@
     btnStart.disabled = true;
     btnStart.style.opacity = "0.4";
     key_ready = true;
+    score = 0;
     draw();
     bomb();
   });
