@@ -1,10 +1,13 @@
 "use script";
 
 {
+  let mode = false;
   let score = 0;
   let stage = 0;
   const score_view = document.getElementById("score_view");
   const stage_view = document.getElementById("stage");
+  const button1 = document.getElementById("button1");
+  const button2 = document.getElementById("button2");
   const ctx = document.getElementById("canvas").getContext("2d");
 
   ctx.beginPath();
@@ -418,13 +421,13 @@
     if (key_code === 38 && key_ready) {
       moveValidation(player, "forward");
     }
-    if (key_code === 40 && key_ready) {
+    if (key_code === 40 && key_ready && mode) {
       moveValidation(player, "back");
     }
-    if (key_code === 39 && key_ready) {
+    if (key_code === 39 && key_ready && mode) {
       moveValidation(player, "right");
     }
-    if (key_code === 37 && key_ready) {
+    if (key_code === 37 && key_ready && mode) {
       moveValidation(player, "left");
     }
   });
@@ -457,6 +460,8 @@
       stage = 0;
       fire = false;
       key_ready = false;
+      button1.disabled = false;
+      button2.disabled = false;
       game.reset();
     }
   }
@@ -470,5 +475,12 @@
     score = 0;
     draw();
     bomb();
+    button1.disabled = true;
+    button2.disabled = true;
+    if (button1.checked) {
+      mode = true;
+    } else {
+      mode = false;
+    }
   });
 }
