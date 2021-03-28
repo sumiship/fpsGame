@@ -23,7 +23,52 @@
     <link rel="icon" href="船2.png" />
   </head>
   <body>
-    <header style="height: 8vh; background-color: antiquewhite"></header>
+    <header
+      class="container"
+      style="height: 8vh; background-color: antiquewhite"
+    >
+      <div class="row">
+        <div class="col-4">
+          <p style="margin-bottom: 0">Score:　<span id="score_view">0</span></p>
+          <p>Stage:　<span id="stage">1</span></p>
+        </div>
+        <div class="col-3 pl-0">
+          <button id="start" type="button" class="mt-2 btn btn-primary">
+            Start
+          </button>
+        </div>
+        <div class="col-5">
+          <button
+            type="button"
+            id="dropdown1"
+            class="mt-2 btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            style="font-size: 4vw"
+          >
+            ルール
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="dropdown1"
+          >
+            <p class="dropdown-item" style="margin-bottom: 0; padding: 0">
+              爆弾処理ゲーム<br />
+              ミニマップに表示される円が爆弾です<br />
+              爆弾は徐々に赤くなり、一定時間で爆発します<br />
+              爆弾は埋まっているため、3D描画では見えません<br />
+              キー操作<br />
+              　矢印キー：それぞれの方向に移動<br />
+              　ｚキー：左回転<br />
+              　ｃキー：右回転<br />
+              また、一定数処理するとステージが上がり、<br />
+              爆弾の生成速度が上がります
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
     <main class="container bg-dark" style="height: 86vh">
       <div class="row bg-danger" style="height: 66vh">
         <canvas
