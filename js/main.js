@@ -293,7 +293,7 @@
       (randomX == 2 && randomY == 9) ||
       (randomX == 2 && randomY == 7) ||
       (randomX == 3 && randomY == 3) ||
-      (randomX == 3 && randomY == 3) ||
+      (randomX == 3 && randomY == 4) ||
       (randomX == 3 && randomY == 6) ||
       (randomX == 3 && randomY == 9) ||
       (randomX == 4 && randomY == 3) ||
