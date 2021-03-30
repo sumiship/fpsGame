@@ -39,40 +39,64 @@
   // }
 
   function fTRt() {
-    flagTurnR = true;
+    if (mode) {
+      flagTurnR = true;
+    }
   }
   function fTRf() {
-    flagTurnR = false;
+    if (mode) {
+      flagTurnR = false;
+    }
   }
   function fTLt() {
-    flagTurnL = true;
+    if (mode) {
+      flagTurnL = true;
+    }
   }
   function fTLf() {
-    flagTurnL = false;
+    if (mode) {
+      flagTurnL = false;
+    }
   }
   function fLt() {
-    flagLeft = true;
+    if (mode) {
+      flagLeft = true;
+    }
   }
   function fLf() {
-    flagLeft = false;
+    if (mode) {
+      flagLeft = false;
+    }
   }
   function fRt() {
-    flagRight = true;
+    if (mode) {
+      flagRight = true;
+    }
   }
   function fRf() {
-    flagRight = false;
+    if (mode) {
+      flagRight = false;
+    }
   }
   function fUt() {
-    flagUp = true;
+    if (mode) {
+      flagUp = true;
+    }
   }
   function fUf() {
-    flagUp = false;
+    if (mode) {
+      flagUp = false;
+    }
   }
   function fDt() {
-    flagDown = true;
+    if (mode) {
+      flagDown = true;
+    }
   }
   function fDf() {
-    flagDown = false;
+    if (mode) {
+      flagDown = false;
+    }
   }
 
   buttonTurnR.addEventListener("touchstart", fTRt);
@@ -613,12 +637,6 @@
     button2.disabled = true;
     if (button1.checked) {
       mode = true;
-      buttonDown.disabled = false;
-      buttonDown.style.opacity = "1";
-      buttonLeft.disabled = false;
-      buttonLeft.style.opacity = "1";
-      buttonRight.disabled = false;
-      buttonRight.style.opacity = "1";
     } else {
       mode = false;
     }
