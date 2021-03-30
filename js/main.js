@@ -39,24 +39,16 @@
   // }
 
   function fTRt() {
-    if (mode) {
-      flagTurnR = true;
-    }
+    flagTurnR = true;
   }
   function fTRf() {
-    if (mode) {
-      flagTurnR = false;
-    }
+    flagTurnR = false;
   }
   function fTLt() {
-    if (mode) {
-      flagTurnL = true;
-    }
+    flagTurnL = true;
   }
   function fTLf() {
-    if (mode) {
-      flagTurnL = false;
-    }
+    flagTurnL = false;
   }
   function fLt() {
     if (mode) {
@@ -79,14 +71,10 @@
     }
   }
   function fUt() {
-    if (mode) {
-      flagUp = true;
-    }
+    flagUp = true;
   }
   function fUf() {
-    if (mode) {
-      flagUp = false;
-    }
+    flagUp = false;
   }
   function fDt() {
     if (mode) {
@@ -637,6 +625,12 @@
     button2.disabled = true;
     if (button1.checked) {
       mode = true;
+      buttonLeft.disabled = false;
+      buttonLeft.style.opacity = "1";
+      buttonDown.disabled = false;
+      buttonDown.style.opacity = "1";
+      buttonRight.disabled = false;
+      buttonRight.style.opacity = "1";
     } else {
       mode = false;
     }
