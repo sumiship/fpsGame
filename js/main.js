@@ -22,42 +22,71 @@
   const buttonDown = document.getElementById("down");
   const ctx = document.getElementById("canvas").getContext("2d");
 
-  buttonTurnR.addEventListener("mousedown", () => {
+  function isSmartPhone() {
+    if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const ele = document.getElementById("command");
+
+  if (!isSmartPhone()) {
+    while (ele.firstChild) {
+      ele.removeChild(ele.firstChild);
+    }
+  }
+
+  function fTRt() {
     flagTurnR = true;
-  });
-  buttonTurnR.addEventListener("mouseup", () => {
+  }
+  function fTRf() {
     flagTurnR = false;
-  });
-  buttonTurnL.addEventListener("mousedown", () => {
+  }
+  function fTLt() {
     flagTurnL = true;
-  });
-  buttonTurnL.addEventListener("mouseup", () => {
+  }
+  function fTLf() {
     flagTurnL = false;
-  });
-  buttonLeft.addEventListener("mousedown", () => {
+  }
+  function fLt() {
     flagLeft = true;
-  });
-  buttonLeft.addEventListener("mouseup", () => {
+  }
+  function fLf() {
     flagLeft = false;
-  });
-  buttonRight.addEventListener("mousedown", () => {
+  }
+  function fRt() {
     flagRight = true;
-  });
-  buttonRight.addEventListener("mouseup", () => {
+  }
+  function fRf() {
     flagRight = false;
-  });
-  buttonUp.addEventListener("mousedown", () => {
+  }
+  function fUt() {
     flagUp = true;
-  });
-  buttonUp.addEventListener("mouseup", () => {
+  }
+  function fUf() {
     flagUp = false;
-  });
-  buttonDown.addEventListener("mousedown", () => {
+  }
+  function fDt() {
     flagDown = true;
-  });
-  buttonDown.addEventListener("mouseup", () => {
+  }
+  function fDf() {
     flagDown = false;
-  });
+  }
+
+  buttonTurnR.addEventListener("touchstart", fTRt);
+  buttonTurnR.addEventListener("touchend", fTRf);
+  buttonTurnL.addEventListener("touchstart", fTLt);
+  buttonTurnL.addEventListener("touchend", fTLf);
+  buttonLeft.addEventListener("touchstart", fLt);
+  buttonLeft.addEventListener("touchend", fLf);
+  buttonRight.addEventListener("touchstart", fRt);
+  buttonRight.addEventListener("touchend", fRf);
+  buttonUp.addEventListener("touchstart", fUt);
+  buttonUp.addEventListener("touchend", fUf);
+  buttonDown.addEventListener("touchstart", fDt);
+  buttonDown.addEventListener("touchend", fDf);
 
   buttonDown.disabled = true;
   buttonDown.style.opacity = "0.4";
