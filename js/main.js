@@ -32,11 +32,11 @@
 
   const ele = document.getElementById("command");
 
-  // if (!isSmartPhone()) {
-  //   while (ele.firstChild) {
-  //     ele.removeChild(ele.firstChild);
-  //   }
-  // }
+  if (!isSmartPhone()) {
+    while (ele.firstChild) {
+      ele.removeChild(ele.firstChild);
+    }
+  }
 
   function fTRt() {
     flagTurnR = true;
