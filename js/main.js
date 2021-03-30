@@ -75,30 +75,18 @@
     flagDown = false;
   }
 
-  // buttonTurnR.addEventListener("touchstart", fTRt);
-  // buttonTurnR.addEventListener("touchend", fTRf);
-  // buttonTurnL.addEventListener("touchstart", fTLt);
-  // buttonTurnL.addEventListener("touchend", fTLf);
-  // buttonLeft.addEventListener("touchstart", fLt);
-  // buttonLeft.addEventListener("touchend", fLf);
-  // buttonRight.addEventListener("touchstart", fRt);
-  // buttonRight.addEventListener("touchend", fRf);
-  // buttonUp.addEventListener("touchstart", fUt);
-  // buttonUp.addEventListener("touchend", fUf);
-  // buttonDown.addEventListener("touchstart", fDt);
-  // buttonDown.addEventListener("touchend", fDf);
-  buttonTurnR.addEventListener("mousedown", fTRt);
-  buttonTurnR.addEventListener("mouseup", fTRf);
-  buttonTurnL.addEventListener("mousedown", fTLt);
-  buttonTurnL.addEventListener("mouseup", fTLf);
-  buttonLeft.addEventListener("mousedown", fLt);
-  buttonLeft.addEventListener("mouseup", fLf);
-  buttonRight.addEventListener("mousedown", fRt);
-  buttonRight.addEventListener("mouseup", fRf);
-  buttonUp.addEventListener("mousedown", fUt);
-  buttonUp.addEventListener("mouseup", fUf);
-  buttonDown.addEventListener("mousedown", fDt);
-  buttonDown.addEventListener("mouseup", fDf);
+  buttonTurnR.addEventListener("touchstart", fTRt);
+  buttonTurnR.addEventListener("touchend", fTRf);
+  buttonTurnL.addEventListener("touchstart", fTLt);
+  buttonTurnL.addEventListener("touchend", fTLf);
+  buttonLeft.addEventListener("touchstart", fLt);
+  buttonLeft.addEventListener("touchend", fLf);
+  buttonRight.addEventListener("touchstart", fRt);
+  buttonRight.addEventListener("touchend", fRf);
+  buttonUp.addEventListener("touchstart", fUt);
+  buttonUp.addEventListener("touchend", fUf);
+  buttonDown.addEventListener("touchstart", fDt);
+  buttonDown.addEventListener("touchend", fDf);
 
   buttonDown.disabled = true;
   buttonDown.style.opacity = "0.4";
