@@ -32,11 +32,11 @@
 
   const ele = document.getElementById("command");
 
-  // if (!isSmartPhone()) {
-  //   while (ele.firstChild) {
-  //     ele.removeChild(ele.firstChild);
-  //   }
-  // }
+  if (!isSmartPhone()) {
+    while (ele.firstChild) {
+      ele.removeChild(ele.firstChild);
+    }
+  }
 
   function fTRt() {
     flagTurnR = true;
@@ -608,9 +608,6 @@
     buttonTurnR.style.opacity = "1";
     key_ready = true;
     score = 0;
-    draw();
-    bomb();
-    command();
     button1.disabled = true;
     button2.disabled = true;
     if (button1.checked) {
@@ -624,5 +621,8 @@
     } else {
       mode = false;
     }
+    draw();
+    bomb();
+    command();
   });
 }
