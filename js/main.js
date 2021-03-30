@@ -4,11 +4,94 @@
   let mode = false;
   let score = 0;
   let stage = 0;
+  let flagTurnR = false;
+  let flagTurnL = false;
+  let flagLeft = false;
+  let flagRight = false;
+  let flagUp = false;
+  let flagDown = false;
   const score_view = document.getElementById("score_view");
   const stage_view = document.getElementById("stage");
   const button1 = document.getElementById("button1");
   const button2 = document.getElementById("button2");
+  const buttonTurnR = document.getElementById("turnR");
+  const buttonTurnL = document.getElementById("turnL");
+  const buttonLeft = document.getElementById("left");
+  const buttonRight = document.getElementById("right");
+  const buttonUp = document.getElementById("up");
+  const buttonDown = document.getElementById("down");
   const ctx = document.getElementById("canvas").getContext("2d");
+
+  buttonTurnR.addEventListener("mousedown", () => {
+    flagTurnR = true;
+  });
+  buttonTurnR.addEventListener("mouseup", () => {
+    flagTurnR = false;
+  });
+  buttonTurnL.addEventListener("mousedown", () => {
+    flagTurnL = true;
+  });
+  buttonTurnL.addEventListener("mouseup", () => {
+    flagTurnL = false;
+  });
+  buttonLeft.addEventListener("mousedown", () => {
+    flagLeft = true;
+  });
+  buttonLeft.addEventListener("mouseup", () => {
+    flagLeft = false;
+  });
+  buttonRight.addEventListener("mousedown", () => {
+    flagRight = true;
+  });
+  buttonRight.addEventListener("mouseup", () => {
+    flagRight = false;
+  });
+  buttonUp.addEventListener("mousedown", () => {
+    flagUp = true;
+  });
+  buttonUp.addEventListener("mouseup", () => {
+    flagUp = false;
+  });
+  buttonDown.addEventListener("mousedown", () => {
+    flagDown = true;
+  });
+  buttonDown.addEventListener("mouseup", () => {
+    flagDown = false;
+  });
+
+  buttonDown.disabled = true;
+  buttonDown.style.opacity = "0.4";
+  buttonLeft.disabled = true;
+  buttonLeft.style.opacity = "0.4";
+  buttonRight.disabled = true;
+  buttonRight.style.opacity = "0.4";
+  buttonUp.disabled = true;
+  buttonUp.style.opacity = "0.4";
+  buttonTurnL.disabled = true;
+  buttonTurnL.style.opacity = "0.4";
+  buttonTurnR.disabled = true;
+  buttonTurnR.style.opacity = "0.4";
+
+  let commandI = 0;
+  function command() {
+    commandI++;
+    if (flagTurnR) {
+      player.angle += Math.PI / 16;
+      draw();
+    }
+    if (flagTurnL) {
+      player.angle -= Math.PI / 16;
+      draw();
+    }
+    if (flagUp) moveValidation(player, "forward");
+    if (flagDown) moveValidation(player, "back");
+    if (flagLeft) moveValidation(player, "left");
+    if (flagRight) moveValidation(player, "right");
+    var id = setTimeout(command, 30);
+    if (commandI > 20000 || !key_ready) {
+      clearTimeout(id);
+    }
+  }
 
   ctx.beginPath();
   ctx.moveTo(50, 0);
@@ -283,8 +366,6 @@
     }
   }
 
-  // let items = [Item.withBox(1, 1), Item.withBox(8, 10)];
-
   function createItem() {
     let randomX = Math.floor(Math.random() * 8) + 1;
     let randomY = Math.floor(Math.random() * 10) + 1;
@@ -452,6 +533,8 @@
     var id = setTimeout(bomb, 1000);
     if (loop > 10000 || fire) {
       clearTimeout(id);
+      game.reset();
+      draw();
       btnStart.innerHTML = "Restart";
       btnStart.disabled = false;
       btnStart.style.opacity = "1";
@@ -462,23 +545,53 @@
       key_ready = false;
       button1.disabled = false;
       button2.disabled = false;
-      game.reset();
+      buttonDown.disabled = true;
+      buttonDown.style.opacity = "0.4";
+      buttonLeft.disabled = true;
+      buttonLeft.style.opacity = "0.4";
+      buttonRight.disabled = true;
+      buttonRight.style.opacity = "0.4";
+      buttonUp.disabled = true;
+      buttonUp.style.opacity = "0.4";
+      buttonTurnL.disabled = true;
+      buttonTurnL.style.opacity = "0.4";
+      buttonTurnR.disabled = true;
+      buttonTurnR.style.opacity = "0.4";
+      flagTurnR = false;
+      flagTurnL = false;
+      flagLeft = false;
+      flagRight = false;
+      flagUp = false;
+      flagDown = false;
     }
   }
   let items = [Item.withBox(1, 1), Item.withBox(8, 10)];
   draw();
   const btnStart = document.getElementById("start");
   btnStart.addEventListener("click", () => {
-    btnStart.disabled = true;
-    btnStart.style.opacity = "0.4";
+    btnStart.disabled = false;
+    btnStart.style.opacity = "1";
+    buttonUp.disabled = false;
+    buttonUp.style.opacity = "1";
+    buttonTurnL.disabled = false;
+    buttonTurnL.style.opacity = "1";
+    buttonTurnR.disabled = false;
+    buttonTurnR.style.opacity = "1";
     key_ready = true;
     score = 0;
     draw();
     bomb();
+    command();
     button1.disabled = true;
     button2.disabled = true;
     if (button1.checked) {
       mode = true;
+      buttonDown.disabled = false;
+      buttonDown.style.opacity = "1";
+      buttonLeft.disabled = false;
+      buttonLeft.style.opacity = "1";
+      buttonRight.disabled = false;
+      buttonRight.style.opacity = "1";
     } else {
       mode = false;
     }

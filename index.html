@@ -22,7 +22,7 @@
     <title>fpsGame</title>
     <link rel="icon" href="船2.png" />
   </head>
-  <body style="height: 700px; width: 365px">
+  <body>
     <header
       class="container"
       style="height: 8vh; background-color: antiquewhite"
@@ -83,15 +83,7 @@
           canvas not supported.
         </canvas>
       </div>
-      <div class="row bg-light" style="height: 20vh">
-        <!-- <button
-          id="turn"
-          type="button"
-          class="btn btn-primary"
-          style="margin: 2vh"
-        >
-          turn
-        </button> -->
+      <div class="row bg-light" style="height: 5vh">
         <div class="form-check">
           <input
             class="form-check-input"
@@ -114,6 +106,84 @@
           <label class="form-check-label" for="flexRadioDefault2">
             厳しい
           </label>
+        </div>
+      </div>
+      <div class="command row" style="height: 15vh">
+        <div class="col-3" style="padding: auto">
+          <button
+            id="turnL"
+            type="button"
+            class="btn btn-primary"
+            style="height: 15vh"
+          >
+            turnL
+          </button>
+        </div>
+        <div
+          id="left"
+          class="col-2"
+          style="
+            height: 15vh;
+            font-size: 20px;
+            color: azure;
+            line-height: 15vh;
+            border: solid 2px;
+          "
+        >
+          ←
+        </div>
+        <div class="command col-2">
+          <div
+            id="up"
+            class="row"
+            style="
+              padding: auto;
+              height: 7.5vh;
+              font-size: 20px;
+              color: azure;
+              line-height: 7.5vh;
+              border: solid 2px;
+            "
+          >
+            <p style="margin: auto">↑</p>
+          </div>
+          <div
+            id="down"
+            class="row"
+            style="
+              padding: auto;
+              height: 7.5vh;
+              font-size: 20px;
+              color: azure;
+              line-height: 7.5vh;
+              border: solid 2px;
+            "
+          >
+            <p style="margin: auto">↓</p>
+          </div>
+        </div>
+        <div
+          id="right"
+          class="col-2"
+          style="
+            height: 15vh;
+            font-size: 20px;
+            color: azure;
+            line-height: 15vh;
+            border: solid 2px;
+          "
+        >
+          →
+        </div>
+        <div class="col-3" style="padding: auto">
+          <button
+            id="turnR"
+            type="button"
+            class="btn btn-primary"
+            style="height: 15vh"
+          >
+            turnR
+          </button>
         </div>
       </div>
     </main>
