@@ -32,11 +32,11 @@
 
   const ele = document.getElementById("command");
 
-  if (!isSmartPhone()) {
-    while (ele.firstChild) {
-      ele.removeChild(ele.firstChild);
-    }
-  }
+  // if (!isSmartPhone()) {
+  //   while (ele.firstChild) {
+  //     ele.removeChild(ele.firstChild);
+  //   }
+  // }
 
   function fTRt() {
     flagTurnR = true;
@@ -117,7 +117,7 @@
     if (flagLeft) moveValidation(player, "left");
     if (flagRight) moveValidation(player, "right");
     var id = setTimeout(command, 30);
-    if (commandI > 20000 || !key_ready) {
+    if (commandI > 200000 || !key_ready) {
       clearTimeout(id);
     }
   }
@@ -607,6 +607,7 @@
     buttonTurnR.disabled = false;
     buttonTurnR.style.opacity = "1";
     key_ready = true;
+    commandI = 0;
     score = 0;
     button1.disabled = true;
     button2.disabled = true;
