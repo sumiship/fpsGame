@@ -569,8 +569,8 @@
   draw();
   const btnStart = document.getElementById("start");
   btnStart.addEventListener("click", () => {
-    btnStart.disabled = false;
-    btnStart.style.opacity = "1";
+    btnStart.disabled = true;
+    btnStart.style.opacity = "0.4";
     buttonUp.disabled = false;
     buttonUp.style.opacity = "1";
     buttonTurnL.disabled = false;
