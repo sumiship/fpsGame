@@ -32,11 +32,11 @@
 
   const ele = document.getElementById("command");
 
-  if (!isSmartPhone()) {
-    while (ele.firstChild) {
-      ele.removeChild(ele.firstChild);
-    }
-  }
+  // if (!isSmartPhone()) {
+  //   while (ele.firstChild) {
+  //     ele.removeChild(ele.firstChild);
+  //   }
+  // }
 
   function fTRt() {
     flagTurnR = true;
@@ -623,6 +623,12 @@
       buttonRight.style.opacity = "1";
     } else {
       mode = false;
+      buttonDown.disabled = true;
+      buttonDown.style.opacity = "0.4";
+      buttonLeft.disabled = true;
+      buttonLeft.style.opacity = "0.4";
+      buttonRight.disabled = true;
+      buttonRight.style.opacity = "0.4";
     }
   });
 }
